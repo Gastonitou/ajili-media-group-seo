@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ajili Media Group – Professionelle SEO Services</title>
+  <meta name="description" content="Ajili Media Group bietet professionelle SEO-Dienstleistungen: On-Page, Off-Page, Technical SEO, Local SEO, Content Strategy & mehr. Ergebnisse die zählen." />
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0f;
+      color: #e0e0e8;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    /* ── Inter Font ── */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+    /* ── Utility ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+    .section-pad { padding: 100px 0; }
+    .text-gradient {
+      background: linear-gradient(135deg, #6ee7ff 0%, #a78bfa 50%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #a78bfa;
+      border: 1px solid rgba(167, 139, 250, 0.25);
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+    }
+
+    /* ── Header / Nav ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 0;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+    }
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.35rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .logo span { color: #a78bfa; }
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .nav-links a { opacity: 0.7; transition: opacity 0.2s; }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta {
+      background: linear-gradient(135deg, #6ee7ff, #a78bfa);
+      color: #0a0a0f !important;
+      padding: 10px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      opacity: 1 !important;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(167,139,250,0.3); }
+
+    /* ── Hero ── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 50%, rgba(167,139,250,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 20%, rgba(110,231,255,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 80%, rgba(244,114,182,0.05) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+    }
+    .hero h1 {
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 24px;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.7;
+      max-width: 600px;
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: linear-gradient(135deg, #6ee7ff, #a78bfa);
+      color: #0a0a0f;
+      font-weight: 700;
+      padding: 16px 36px;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(167,139,250,0.35); }
+    .btn-outline {
+      display: inline-block;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #e0e0e8;
+      font-weight: 600;
+      padding: 16px 36px;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-outline:hover { border-color: #a78bfa; background: rgba(167,139,250,0.06); }
+
+    /* ── Stats Bar ── */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 16px;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+    .stat-item {
+      background: #0f0f17;
+      padding: 28px 24px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #a78bfa;
+    }
+    .stat-label {
+      font-size: 0.85rem;
+      opacity: 0.6;
+      margin-top: 4px;
+    }
+
+    /* ── Section Titles ── */
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1.1rem;
+      opacity: 0.6;
+      max-width: 560px;
+    }
+
+    /* ── Services ── */
+    #services { background: linear-gradient(180deg, #0f0f17 0%, #0a0a0f 100%); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .service-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 16px;
+      padding: 36px 32px;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .service-card:hover {
+      border-color: rgba(167,139,250,0.2);
+      transform: translateY(-4px);
+    }
+    .service-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: rgba(167,139,250,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .service-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .service-card p {
+      font-size: 0.92rem;
+      opacity: 0.65;
+      line-height: 1.7;
+    }
+    .service-card .service-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .service-card .service-tags span {
+      font-size: 0.72rem;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(167,139,250,0.08);
+      color: #a78bfa;
+    }
+
+    /* ── Process ── */
+    #prozess { background: #0f0f17; }
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 32px;
+      margin-top: 56px;
+      position: relative;
+    }
+    .process-step {
+      text-align: center;
+      position: relative;
+    }
+    .process-step .step-num {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #6ee7ff, #a78bfa);
+      color: #0a0a0f;
+      font-weight: 800;
+      font-size: 1.3rem;
+      margin: 0 auto 20px;
+    }
+    .process-step h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .process-step p {
+      font-size: 0.88rem;
+      opacity: 0.6;
+      line-height: 1.6;
+    }
+
+    /* ── Why Us ── */
+    #warum-wir { background: #0a0a0f; }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+      margin-top: 56px;
+    }
+    .why-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .why-item .check {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(167,139,250,0.12);
+      color: #a78bfa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+    .why-item h4 {
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+    .why-item p {
+      font-size: 0.88rem;
+      opacity: 0.6;
+    }
+
+    /* ── Pricing ── */
+    #pakete { background: #0f0f17; }
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .pricing-card {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 16px;
+      padding: 40px 32px;
+      text-align: center;
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative;
+    }
+    .pricing-card.featured {
+      border-color: rgba(167,139,250,0.3);
+      background: rgba(167,139,250,0.04);
+    }
+    .pricing-card.featured::before {
+      content: 'Empfohlen';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, #6ee7ff, #a78bfa);
+      color: #0a0a0f;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 16px;
+      border-radius: 100px;
+    }
+    .pricing-card:hover { transform: translateY(-4px); border-color: rgba(167,139,250,0.2); }
+    .pricing-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .pricing-card .price {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #a78bfa;
+      margin: 16px 0;
+    }
+    .pricing-card .price span {
+      font-size: 1rem;
+      font-weight: 400;
+      opacity: 0.5;
+    }
+    .pricing-card ul {
+      list-style: none;
+      text-align: left;
+      margin: 24px 0;
+    }
+    .pricing-card ul li {
+      padding: 8px 0;
+      font-size: 0.9rem;
+      opacity: 0.75;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pricing-card ul li::before {
+      content: '✓';
+      color: #a78bfa;
+      font-weight: 700;
+    }
+    .pricing-card .btn-pricing {
+      display: inline-block;
+      width: 100%;
+      padding: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+    }
+    .pricing-card.featured .btn-pricing {
+      background: linear-gradient(135deg, #6ee7ff, #a78bfa);
+      color: #0a0a0f;
+      border: none;
+    }
+    .pricing-card .btn-pricing:hover {
+      border-color: #a78bfa;
+      background: rgba(167,139,250,0.06);
+    }
+    .pricing-card.featured .btn-pricing:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(167,139,250,0.3);
+    }
+
+    /* ── Contact ── */
+    #kontakt { background: #0a0a0f; }
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      margin-top: 56px;
+      align-items: start;
+    }
+    .contact-info h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .contact-info p { opacity: 0.6; margin-bottom: 32px; }
+    .contact-info .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 0.95rem;
+    }
+    .contact-info .contact-method .icon { opacity: 0.5; font-size: 1.1rem; }
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form select {
+      width: 100%;
+      padding: 14px 18px;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      color: #e0e0e8;
+      font-family: inherit;
+      font-size: 0.95rem;
+      transition: border-color 0.2s;
+    }
+    .contact-form input:focus,
+    .contact-form textarea:focus,
+    .contact-form select:focus {
+      outline: none;
+      border-color: #a78bfa;
+    }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form select option { background: #0a0a0f; color: #e0e0e8; }
+    .contact-form button {
+      padding: 16px;
+      background: linear-gradient(135deg, #6ee7ff, #a78bfa);
+      color: #0a0a0f;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .contact-form button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(167,139,250,0.3);
+    }
+    .contact-note {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      opacity: 0.4;
+      text-align: center;
+    }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 40px 0;
+      text-align: center;
+    }
+    footer .footer-logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+    }
+    footer .footer-logo span { color: #a78bfa; }
+    footer p {
+      font-size: 0.85rem;
+      opacity: 0.4;
+    }
+    footer .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 16px 0;
+      list-style: none;
+      font-size: 0.85rem;
+    }
+    footer .footer-links a { opacity: 0.5; transition: opacity 0.2s; }
+    footer .footer-links a:hover { opacity: 0.8; }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .contact-wrap { grid-template-columns: 1fr; gap: 40px; }
+      .hero h1 { font-size: 2.4rem; }
+      .section-pad { padding: 60px 0; }
+      .pricing-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ Header ═══ -->
+  <header>
+    <nav class="container">
+      <div class="logo">Ajili <span>Media Group</span></div>
+      <ul class="nav-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#prozess">Prozess</a></li>
+        <li><a href="#pakete">Pakete</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+      </ul>
+      <a href="#kontakt" class="nav-cta">Projekt starten</a>
+    </nav>
+  </header>
+
+  <!-- ═══ Hero ═══ -->
+  <section class="hero" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="container hero-content">
+      <div class="tag">SEO-Experten</div>
+      <h1>Sichtbarkeit die<br><span class="text-gradient">wirklich performt</span></h1>
+      <p>
+        Wir bringen Ihre Website auf die erste Seite – mit datengetriebenen SEO-Strategien,
+        Technical Excellence und messbaren Ergebnissen. Kein Bla-Bla, nur Rankings.
+      </p>
+      <div class="hero-buttons">
+        <a href="#pakete" class="btn-primary">Pakete ansehen</a>
+        <a href="#kontakt" class="btn-outline">Kostenlose Analyse</a>
+      </div>
+      <div class="stats-bar">
+        <div class="stat-item">
+          <div class="stat-number">180+</div>
+          <div class="stat-label">Projekte optimiert</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4.9★</div>
+          <div class="stat-label">Durchschnittsbewertung</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">4.2×</div>
+          <div class="stat-label">Mehr Traffic im Ø</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">96%</div>
+          <div class="stat-label">Top-10-Rankings</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Services ═══ -->
+  <section id="services" class="section-pad">
+    <div class="container">
+      <div class="tag">Unsere Expertise</div>
+      <h2 class="section-title">SEO-Services auf <span class="text-gradient">professionellem Niveau</span></h2>
+      <p class="section-sub">Von der technischen Analyse bis zur Content-Strategie – wir liefern alles aus einer Hand.</p>
+      <div class="services-grid">
+
+        <div class="service-card fade-up">
+          <div class="service-icon">🔍</div>
+          <h3>On-Page SEO</h3>
+          <p>Optimierung von Meta-Tags, Headlines, internen Verlinkungen, Content-Struktur und Keyword-Integration für maximale Relevanz.</p>
+          <div class="service-tags">
+            <span>Meta-Tags</span><span>Content-Optimierung</span><span>Keyword-Strategie</span><span>Internal Links</span>
+          </div>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-icon">🌐</div>
+          <h3>Off-Page SEO</h3>
+          <p>Professioneller Linkaufbau, Digital PR, Brand Mentions und Authority-Building für nachhaltige Domain-Power.</p>
+          <div class="service-tags">
+            <span>Linkbuilding</span><span>Digital PR</span><span>Brand Mentions</span><span>Backlink-Analyse</span>
+          </div>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-icon">⚙️</div>
+          <h3>Technical SEO</h3>
+          <p>Core Web Vitals, Crawling-Optimierung, Schema Markup, Sitemaps, Robots.txt, Page Speed & Mobile Performance.</p>
+          <div class="service-tags">
+            <span>Core Web Vitals</span><span>Schema.org</span><span>Page Speed</span><span>Mobile First</span>
+          </div>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-icon">📍</div>
+          <h3>Local SEO</h3>
+          <p>Google Business Profile Optimierung, lokale Zitate, Bewertungsmanagement und regionale Rankings für maximale lokale Sichtbarkeit.</p>
+          <div class="service-tags">
+            <span>Google Business</span><span>Lokale Zitate</span><span>Bewertungen</span><span>Regionallinks</span>
+          </div>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-icon">📝</div>
+          <h3>Content Strategy & SEO-Text</h3>
+          <p>Keyword-Recherche, Content-Cluster, Blog-Strategie, SEO-optimierte Texte und Content-Audits für nachhaltigen organischen Traffic.</p>
+          <div class="service-tags">
+            <span>Content-Cluster</span><span>Keyword Research</span><span>SEO-Texte</span><span>Content-Audit</span>
+          </div>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-icon">📊</div>
+          <h3>SEO-Analyse & Reporting</h3>
+          <p>Detaillierte SEO-Audits, Konkurrenzanalyse, Ranking-Tracking, Google Analytics/Search Console Setup & monatliche Reports.</p>
+          <div class="service-tags">
+            <span>SEO-Audit</span><span>Ranking-Tracking</span><span>Konkurrenzanalyse</span><span>Custom Reports</span>
+          </div>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-icon">🛒</div>
+          <h3>E-Commerce SEO</h3>
+          <p>Shop-Optimierung, Produktseiten-Struktur, Kategorieseiten, technische Shop-Performance und Conversion-fokussierte SEO-Strategien.</p>
+          <div class="service-tags">
+            <span>Shop-Optimierung</span><span>Produktseiten</span><span>Kategorie-SEO</span><span>Conversion SEO</span>
+          </div>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="service-icon">🤖</div>
+          <h3>AI & SEO Beratung</h3>
+          <p>Optimierung für KI-Suchmaschinen, AI Overviews, strukturierte Daten für Knowledge Graphs und zukunftssichere SEO-Strategien.</p>
+          <div class="service-tags">
+            <span>AI Overviews</span><span>Knowledge Graph</span><span>Strukturierte Daten</span><span>Zukunftssicher</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Prozess ═══ -->
+  <section id="prozess" class="section-pad">
+    <div class="container">
+      <div class="tag">Unser Ansatz</div>
+      <h2 class="section-title">So arbeiten <span class="text-gradient">wir</span></h2>
+      <p class="section-sub">Ein klarer, datengetriebener Prozess – von der Analyse bis zur kontinuierlichen Optimierung.</p>
+      <div class="process-grid">
+        <div class="process-step fade-up">
+          <div class="step-num">1</div>
+          <h3>Analyse</h3>
+          <p>Tiefgehendes SEO-Audit: Technik, Content, Backlinks, Wettbewerb. Wir finden jede Lücke.</p>
+        </div>
+        <div class="process-step fade-up">
+          <div class="step-num">2</div>
+          <h3>Strategie</h3>
+          <p>Maßgeschneiderter Fahrplan mit klaren KPIs, Meilensteinen und priorisierten Maßnahmen.</p>
+        </div>
+        <div class="process-step fade-up">
+          <div class="step-num">3</div>
+          <h3>Umsetzung</h3>
+          <p>On-Page, Technical, Content & Linkbuilding – wir setzen die Strategie Schlag auf Schlag um.</p>
+        </div>
+        <div class="process-step fade-up">
+          <div class="step-num">4</div>
+          <h3>Monitoring</h3>
+          <p>Ranking-Tracking, Traffic-Analyse und kontinuierliche Optimierung. Monatliche Reports inklusive.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Why Us ═══ -->
+  <section id="warum-wir" class="section-pad">
+    <div class="container">
+      <div class="tag">Warum wir</div>
+      <h2 class="section-title">Ajili Media Group – <span class="text-gradient">Ihr SEO-Partner</span></h2>
+      <p class="section-sub">Ergebnisse statt Versprechen. So unterscheiden wir uns.</p>
+      <div class="why-grid">
+        <div class="why-item fade-up">
+          <div class="check">✓</div>
+          <div>
+            <h4>Datengetrieben & transparent</h4>
+            <p>Jede Entscheidung basiert auf echten Daten. Sie sehen genau, was wir tun und was es bringt.</p>
+          </div>
+        </div>
+        <div class="why-item fade-up">
+          <div class="check">✓</div>
+          <div>
+            <h4>White-Label & Agentur-Partner</h4>
+            <p>Wir arbeiten als zuverlässiger White-Label-Partner für Werbeagenturen und Marketing-Dienstleister.</p>
+          </div>
+        </div>
+        <div class="why-item fade-up">
+          <div class="check">✓</div>
+          <div>
+            <h4>Years of Experience</h4>
+            <p>180+ erfolgreiche Projekte, jahrelange Erfahrung in allen SEO-Disziplinen – von Local bis Enterprise.</p>
+          </div>
+        </div>
+        <div class="why-item fade-up">
+          <div class="check">✓</div>
+          <div>
+            <h4>Flexibel & skalierbar</h4>
+            <p>Vom Starter-Paket bis zur Full-Service-Betreuung – wir wachsen mit Ihren Anforderungen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Pricing ═══ -->
+  <section id="pakete" class="section-pad">
+    <div class="container">
+      <div class="tag">Preise</div>
+      <h2 class="section-title">Pakete die <span class="text-gradient">passen</span></h2>
+      <p class="section-sub">Flexible Modelle – vom Einstieg bis zur Full-Service-Betreuung. Individuelle Angebote auf Anfrage.</p>
+      <div class="pricing-grid">
+        <div class="pricing-card fade-up">
+          <h3>Starter</h3>
+          <div class="price">ab 499<span> €/Monat</span></div>
+          <ul>
+            <li>SEO-Basisanalyse & Audit</li>
+            <li>On-Page Optimierung (bis 10 Seiten)</li>
+            <li>Keyword-Recherche & Strategie</li>
+            <li>Monatliches Ranking-Report</li>
+            <li>E-Mail-Support</li>
+          </ul>
+          <a href="#kontakt" class="btn-pricing">Anfragen</a>
+        </div>
+        <div class="pricing-card featured fade-up">
+          <h3>Professional</h3>
+          <div class="price">ab 999<span> €/Monat</span></div>
+          <ul>
+            <li>Komplettes SEO-Audit & Strategie</li>
+            <li>On-Page & Technical SEO</li>
+            <li>Off-Page / Linkbuilding (bis 5 Links)</li>
+            <li>Content-Optimierung (bis 5 Seiten)</li>
+            <li>Google Business Optimierung</li>
+            <li>Monatliche Reports & Strategie-Call</li>
+          </ul>
+          <a href="#kontakt" class="btn-pricing">Beliebt – Anfragen</a>
+        </div>
+        <div class="pricing-card fade-up">
+          <h3>Enterprise</h3>
+          <div class="price">Individuell</div>
+          <ul>
+            <li>Vollumfängliche SEO-Betreuung</li>
+            <li>Content-Strategie & Produktion</li>
+            <li>Skalierter Linkaufbau</li>
+            <li>E-Commerce / Multi-Site SEO</li>
+            <li>Dedizierter SEO-Manager</li>
+            <li>Wöchentliche Calls & Live-Dashboard</li>
+          </ul>
+          <a href="#kontakt" class="btn-pricing">Anfragen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Contact ═══ -->
+  <section id="kontakt" class="section-pad">
+    <div class="container">
+      <div class="tag">Kontakt</div>
+      <h2 class="section-title">Starten wir Ihr <span class="text-gradient">Projekt</span></h2>
+      <p class="section-sub">Fordern Sie Ihre kostenlose SEO-Ersteinschätzung an – unverbindlich und innerhalb von 48 Stunden.</p>
+      <div class="contact-wrap">
+        <div class="contact-info fade-up">
+          <h3>Ajili Media Group</h3>
+          <p>Wir freuen uns auf Ihre Nachricht. Nutzen Sie das Formular oder schreiben Sie uns direkt.</p>
+          <div class="contact-method">
+            <span class="icon">📧</span>
+            <span>kontakt@ajilimediagroup.com</span>
+          </div>
+          <div class="contact-method">
+            <span class="icon">💬</span>
+            <span>Kontaktformular unten – wir melden uns innerhalb von 24h</span>
+          </div>
+          <div class="contact-method">
+            <span class="icon">🌍</span>
+            <span>Deutschland & international</span>
+          </div>
+        </div>
+        <form class="contact-form fade-up" id="contactForm">
+          <input type="text" placeholder="Name / Unternehmen" required />
+          <input type="email" placeholder="E-Mail-Adresse" required />
+          <input type="text" placeholder="Website (falls vorhanden)" />
+          <select>
+            <option value="" disabled selected>Interesse an …</option>
+            <option>SEO-Komplettbetreuung</option>
+            <option>Technical SEO Audit</option>
+            <option>Content-Strategie</option>
+            <option>Local SEO</option>
+            <option>Linkbuilding</option>
+            <option>White-Label Partnerschaft</option>
+            <option>Sonstiges</option>
+          </select>
+          <textarea placeholder="Ihre Nachricht – erzählen Sie uns von Ihrem Projekt …"></textarea>
+          <button type="submit">Kostenlose Ersteinschätzung anfordern</button>
+          <p class="contact-note">Kein Spam, keine Telefonate. Wir melden uns per E-Mail innerhalb von 24 Stunden.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer>
+    <div class="container">
+      <div class="footer-logo">Ajili <span>Media Group</span></div>
+      <ul class="footer-links">
+        <li><a href="#services">Services</a></li>
+        <li><a href="#prozess">Prozess</a></li>
+        <li><a href="#pakete">Pakete</a></li>
+        <li><a href="#kontakt">Kontakt</a></li>
+        <li><a href="#">Impressum</a></li>
+      </ul>
+      <p>&copy; 2026 Ajili Media Group – Alle Rechte vorbehalten.</p>
+    </div>
+  </footer>
+
+  <!-- ═══ Scroll Animation ═══ -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // Form-Funktion (Platzhalter)
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Danke für Ihre Anfrage! Wir melden uns innerhalb von 24 Stunden per E-Mail.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>
