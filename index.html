@@ -475,11 +475,15 @@
           <div class="contact-method"><span class="icon">Antwort</span> <span>Kontaktformular – wir melden uns innerhalb von 24h</span></div>
           <div class="contact-method"><span class="icon">Region</span> <span>Deutschland & international</span></div>
         </div>
-        <form class="contact-form fade-up" id="contactForm">
-          <input type="text" placeholder="Name / Unternehmen" required />
-          <input type="email" placeholder="E-Mail-Adresse" required />
-          <input type="text" placeholder="Website (falls vorhanden)" />
-          <select>
+        <form class="contact-form fade-up" id="contactForm" action="https://formsubmit.co/ghassenlaajili6@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="Neue SEO-Anfrage – Ajili Media Group" />
+          <input type="hidden" name="_next" value="https://gastonitou.github.io/ajili-media-group-seo/?sent=1" />
+          <input type="hidden" name="_captcha" value="true" />
+          <input type="text" name="_honey" style="display:none" />
+          <input type="text" name="name" placeholder="Name / Unternehmen" required />
+          <input type="email" name="email" placeholder="E-Mail-Adresse" required />
+          <input type="text" name="website" placeholder="Website (falls vorhanden)" />
+          <select name="interesse">
             <option value="" disabled selected>Interesse an …</option>
             <option>SEO-Komplettbetreuung</option>
             <option>Technical SEO Audit</option>
@@ -489,7 +493,7 @@
             <option>White-Label Partnerschaft</option>
             <option>Sonstiges</option>
           </select>
-          <textarea placeholder="Ihre Nachricht – erzählen Sie uns von Ihrem Projekt …"></textarea>
+          <textarea name="nachricht" placeholder="Ihre Nachricht – erzählen Sie uns von Ihrem Projekt …"></textarea>
           <button type="submit">Kostenlose Ersteinschätzung anfordern</button>
           <p class="contact-note">Kein Spam · Keine Telefonate · Wir antworten per E-Mail innerhalb von 24h</p>
         </form>
@@ -711,10 +715,19 @@
 
     // Form
     document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Danke für Ihre Anfrage! Wir melden uns innerhalb von 24 Stunden per E-Mail.');
-      this.reset();
+      // Native submit to FormSubmit – no preventDefault
     });
+
+    // Success message after redirect
+    if (window.location.search.includes('sent=1')) {
+      const msg = document.createElement('div');
+      msg.style.cssText = 'position:fixed;top:100px;left:50%;transform:translateX(-50%);z-index:999;background:#0f0f17;border:1px solid rgba(167,139,250,.3);color:#a78bfa;padding:20px 36px;border-radius:12px;font-weight:600;backdrop-filter:blur(20px);text-align:center';
+      msg.innerHTML = '✓ Anfrage erfolgreich gesendet!<br><span style="font-size:.85rem;opacity:.6;font-weight:400">Wir melden uns innerhalb von 24 Stunden per E-Mail.</span>';
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 6000);
+      // Clean URL
+      window.history.replaceState({}, '', window.location.pathname);
+    }
   </script>
 </body>
 </html>
